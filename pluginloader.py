@@ -21,7 +21,7 @@ class PluginLoader:
         module_paths = []
         for (dirpath, dirs, files) in os.walk(self.path):
             if not len(files) <= 0 and any(f.endswith('.py') for f in files):
-                module_paths.append(dirpath.replace('\\', '.'))
+                module_paths.append(dirpath.replace('\\', '.').replace('/', '.'))
         return module_paths
 
     def load_plugins(self):
