@@ -3,7 +3,10 @@ import os
 
 class PluginLoader:
 
-    def __init__(self, path):
+    def __init__(self, path, plugin_blueprint=None):
+        if not plugin_blueprint:
+            plugin_blueprint = Plugin
+        self.plugin_blueprint = plugin_blueprint
         self.path = path
         self.classes = []
         self.modules = []
@@ -30,7 +33,7 @@ class PluginLoader:
         self.update_classes()
 
     def update_classes(self):
-        self.classes = Plugin.__subclasses__()
+        self.classes = self.plugin_blueprint.__subclasses__()
 
     def get_module(self, cl):
         classes_modules = dict(zip(self.classes, self.modules))
