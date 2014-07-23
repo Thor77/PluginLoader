@@ -6,6 +6,20 @@ A simple plugin loader
 Usage
 =====
 
+### files/folders:
+
+```
+pluginloader.py
+main.py
+plugins
+       \plugin1
+               \__init__.py
+       \plugin2
+               \__init__.py
+```
+
+### main.py:
+
 ```python
 from pluginloader import PluginLoader
 
